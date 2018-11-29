@@ -1,48 +1,52 @@
-
+<!-- @Author Ivan Mardini -->
   <!-- Nav bar -->
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
           <div class="container">
             <div class="container">
                 <a ui-sref="home">
-                    <img style="width:80px;height:80px" src="img/logo-wikimovie.png">
+                  <!-- @note Se agrega logo en el header
+             --> <img style="width:80px;height:80px" src="img/logo-wikimovie.png">
                 </a>
             </div>
           </div>
         </nav>
         <br></br> <br></br>
-        
+        <!-- @note Botón que permite devolverse al template home -->
         <a class="btn btn-info" id="back-button" role="button" ui-sref="home">
             <h6>Back</h6>
         </a>
         <!-- Movies Details-->
-        
         <div class="container">
-            
+          <!-- @note Titulo de la pelicula -->
                 <h1 class="my-4">{{title}}
+                  <!-- @note Año de estreno @param date permite hacer filtrado de fecha @param 'yyyy'
+                  Permite filtar solo el año de la fecha-->
                   <small>({{release_date | date:'yyyy'}})</small>
                 </h1>
-          
                 <div class="row">
                   <div  class="col-md-5">
+                    <!-- @note Imagen de poster de pelicula -->
                         <img class="img-fluid" src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{backdrop_path}}">
                   </div>
           
                   <div class="col-md-7">
+                    <!-- @note Overview de la pelicula -->
                     <h3 class="my-3">Overview</h3>
                     <p>{{overview}}</p>
+                    <!-- @note Detalles de la pelicula -->
                     <h3 class="my-3">Details</h3>
                     <ul>
-                      <li>Vote Average: {{vote_average}}</li>
-                      <li>Vote count: {{vote_count}}</li>
-                      <li>Popularity: {{popularity}}</li>
-                      <li>Original Language: {{language(original_language)}}</li>
-                      <li>Audience: {{getAudience(audience)}}</li>
-                      <li>Release date: {{release_date}}</li>
+                      <!-- @note Promedio de votos --><li>Vote Average: {{vote_average}}</li>
+                      <!-- @note Numero de votos --><li>Vote count: {{vote_count}}</li>
+                      <!-- @note Popularidad --><li>Popularity: {{popularity}}</li>
+                      <!-- @note Lenguaje original --><li>Original Language: {{language(original_language)}}</li>
+                      <!-- @note Audiencia --><li>Audience: {{getAudience(audience)}}</li>
+                      <!-- @note Fecha de estreno --><li>Release date: {{release_date}}</li>
                     </ul>
                   </div>
           
                 </div>
               </div>
             </div>
-              <br></br>
+            <br></br>
               

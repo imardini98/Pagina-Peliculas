@@ -1,7 +1,9 @@
+<!-- @author Ivan Mardini -->
 <!doctype html>
-<html ng-app="api">
+<!-- Se llama al modulo --><html ng-app="api">
   <head>
     <title>WikiMovies</title>
+    <!-- @note Se incluye los documentos de angular, bootstrap, el modulo,icono, estilos, y plantilla a usar -->
       <script src="lib/angular.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.20/angular-ui-router.js"></script>
       <script src="js/api.js"></script>
@@ -11,16 +13,16 @@
       <link rel="icon" href="img/logo-wikimovie.ico">
 
   </head>
-  <!-- Nav bar -->
   <body>
+    <!-- @note Se agrega la vista a través de ui-router -->
     <ui-view>  </ui-view>
-       <!-- Footer -->
+       <!-- @note Footer -->
     <footer class="py-5 bg-dark">
       <div class="container">
         <p class="m-0 text-center text-white">Copyright &copy; WikiMovies 2018</p>
       </div>
-      <!-- /.container -->
     </footer>
+    <!-- Bootstrap core -->
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

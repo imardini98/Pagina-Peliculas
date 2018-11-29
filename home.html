@@ -1,38 +1,52 @@
+<!-- @Author Ivan Mardini -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
           <div class="container">
               <a ui-sref="home">
-                  <img style="width:80px;height:80px" src="img/logo-wikimovie.png">
+            <!-- @note Se agrega logo en el header
+             -->      <img style="width:80px;height:80px" src="img/logo-wikimovie.png">
               </a>
-        </div>
+        </div><!-- @note Input text para buscar una pelicula @param searchMovie Obtiene la vista y la lleva al modelo-->
           <input style="width:500px" class="form-control form-rounded" type="text" placeholder="Search a movie..." ng-model="searchMovie"/>
         </div>
+        <!-- @note Categorias de peliculas -->
         <div 
-        
           class="navbar-brand" > Categories: 
         </div>
+        <!-- @note Select para seleccionar categorias de peliculas -->
         <div class="container">
           <select  class="rounded" ng-model="Category" >
+            <!-- @param ng-repeat Se recorre el vector categories.genres @param
+            value se almacena el id de la categoria en el value de option -->
             <option ng-repeat="category in categories.genres" value="{{category.id}}">
-               {{category.name}}
+              <!--@note Se obtiene el nombre categoria a través de {{}} binding --> {{category.name}}
             </option>
           </select>
      
         </div>
       </nav>
-      <!-- Movies List-->
+      <!-- @note Lista de Peliculas-->
       <div class="container-fluid">
           <br></br><br></br>
-          <div id="movie-poster" class="row text-center text-lg-left" >
-    
+          <div id="movie-poster" class="row text-center text-lg-left" ><!-- @note Se traen a la vista
+          los posters de las peliculas, el titulo y el año de estreno a través de ng-repeat @param ng-mouseenter
+          Se utiliza el evento para hacer aparecer un fragmento del overview @param ng-mouseleave
+          Se utiliza el evento para hacer desaparecer un fragmento del overview de la pelicula
+          @param | permite usar filtros @param filter: permite colocar un valor de coincidencia para 
+          realizar el filtro @param filter:{genre_ids:Category} Se realiza el filtrado de peliculas dependiendo 
+          de los ids de categorias a los que pertenecen -->
             <div ng-init="value=true" ng-mouseenter="value=false" ng-mouseleave="value=true" 
-            class="col-lg-3 col-md-4 col-xs-6" ng-repeat="result in movies.results | filter:searchMovie 
-            | filter:{genre_ids:Category}">
+              class="col-lg-3 col-md-4 col-xs-6" ng-repeat="result in movies.results | filter:searchMovie 
+              | filter:{genre_ids:Category}">
               <a ui-sref="movie_details({id: result.id,name:result.title})" class="d-block mb-4 h-100">
                 <img class="img-fluid img-thumbnail" ng-src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{result.poster_path}}" alt="{{result.title}}">
                 <h6 class="text-center" style="color:black" >{{result.title+" "}}{{result.release_date | date:'yyyy'}}</h6>
               </a>
-              <div id="image" ng-hide="value" class="text-above" >{{result.overview}}</div>
+              <div id="image" ng-hide="value" class="text-above" >
+                <!-- @note Se realiza el binding entre el modelo y al vista para visualizar el overview 
+                de la pelicula -->
+                {{result.overview}}
+              </div>
               
             </div>
             
